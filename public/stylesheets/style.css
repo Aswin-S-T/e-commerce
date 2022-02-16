@@ -1,8 +1,22 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+  margin: 0;
+  padding: 0;
 }
-
-a {
-  color: #00B7FF;
+header {
+  background-color: rgb(8, 12, 19);
+}
+.brand {
+  color: #ffff;
+  font-family: sans-serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+.product-list-im {
+  width: 60px;
+  height: 60px;
+}
+.bxContainer {
+  background-color: whitesmoke;
+  padding: 5px;
+  margin-bottom: 10px;
 }
