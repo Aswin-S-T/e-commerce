@@ -18,11 +18,12 @@
                 {{#each products}}
                 <tr>
                     <th scope="row">{{this._id}}</th>
-                    <td>{{this.name}}</td>
-                    <td><img class="product-list-im" src="{{this.image}}" alt="image-p" /></td>
-                    <td>{{this.category}}</td>
-                    <td>{{this.price}}</td>
-                    <td>{{this.offer}}</td>
+                    <td>{{this.Name}}</td>
+                    <td><img class="product-list-im" src="/product-images/{{this._id}}.jpg" alt="image-p" />
+                    </td>
+                    <td>{{this.Category}}</td>
+                    <td>{{this.Price}}</td>
+                    <td>{{this.Offer}}</td>
                 </tr>
                 {{/each}}
             </tbody>

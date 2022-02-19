@@ -4,7 +4,17 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var hbs = require("express-handlebars");
-var filrUpload = require("express-fileupload");
+var fileUpload = require("express-fileupload");
+const db = require("./config/connection");
+const session = require("express-session");
+
+db.connect((err, done) => {
+  if (err) {
+    console.log("Error : ", err);
+  } else {
+    console.log("Database conneted successfully");
+  }
+});
 
 var userRouter = require("./routes/user");
 var adminRouter = require("./routes/admin");
@@ -30,7 +40,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-app.use(filrUpload());
+app.use(fileUpload());
+app.use(
+  session({
+    secret: "key",
+    cookie: {
+      maxAge: 600000,
+    },
+  })
+);
 
 app.use("/", userRouter);
 app.use("/admin", adminRouter);
