@@ -1,0 +1,33 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h2>Edit Product</h2>
+                <div class="bxContainer mt-5">
+                    <div class="container-fluid">
+                        <form action="/admin/edit-product/{{product._id}}" method="post" enctype="multipart/form-data">
+                            <p>Name</p>
+                            <input type="text" placeholder="Enter name" name="Name" class="form-control"
+                                value="{{product.Name}}">
+                            <p>Category</p>
+                            <input type="text" placeholder="Enter category" name="Category" class="form-control"
+                                value="{{product.Category}}" />
+                            <p>Price</p>
+                            <input type="text" placeholder="Enter price" name="Price" class="form-control"
+                                value="{{product.Price}}">
+                            <p>Offer</p>
+                            <input type="text" placeholder="Enter price" name="Offer" class="form-control"
+                                value="{{product.Offer}}">
+                            <img class="w-25" src="/product-images/{{product._id}}.jpg" alt="pro-im" />
+                            <p>Image</p>
+                            <input type="file" name="Image">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</section>

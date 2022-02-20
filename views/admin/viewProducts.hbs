@@ -24,6 +24,9 @@
                     <td>{{this.Category}}</td>
                     <td>{{this.Price}}</td>
                     <td>{{this.Offer}}</td>
+                    <td><a href="/admin/delete-product/{{this._id}}" class="btn btn-danger"
+                            onclick="return confirm('Do you want to delete')">Delete</a></td>
+                    <td><a href="/admin/edit-product/{{this._id}}" class="btn btn-primary">Edit</a></td>
                 </tr>
                 {{/each}}
             </tbody>

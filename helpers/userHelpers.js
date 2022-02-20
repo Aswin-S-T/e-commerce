@@ -1,5 +1,7 @@
 const db = require("../config/connection");
 const bcrypt = require("bcrypt");
+const ObjectId = require("mongodb").ObjectID;
+
 module.exports = {
   doSignUp: (userData) => {
     return new Promise(async (resolve, reject) => {
@@ -34,6 +36,27 @@ module.exports = {
         console.log("Not user ");
         loginStatus = false;
         resolve({ status: false });
+      }
+    });
+  },
+  addToCart: (productId, userId) => {
+    return new Promise(async (resolve, reject) => {
+      let userCart = await db
+        .get()
+        .collection("cart")
+        .findOne({ user: userId });
+      if (userCart) {
+      } else {
+        let cartObj = {
+          user: ObjectId(userId),
+          products: [ObjectId(productId)],
+        };
+        db.get()
+          .collection("cart")
+          .insertOne(cartObj)
+          .then((response) => {
+            resolve(response);
+          });
       }
     });
   },
