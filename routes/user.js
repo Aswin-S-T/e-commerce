@@ -15,7 +15,6 @@ function varifyLogin(req, res, next) {
 /* GET home page. */
 router.get("/", function (req, res, next) {
   let user = req.session.user;
-  console.log("USER : ", user);
   let products = productHelper.getProducts().then((products) => {
     res.render("users/viewProducts", { admin: false, products, user });
   });
@@ -53,8 +52,11 @@ router.get("/logout", (req, res) => {
   res.redirect("/login");
 });
 
-router.get("/cart", varifyLogin, (req, res) => {
-  res.render("users/cart");
+router.get("/cart", varifyLogin, async (req, res) => {
+  let userId = req.session.user._id;
+  let cartProducts = await userHelper.getCartProducts(userId);
+  console.log("cart products*********", cartProducts);
+  res.render("users/cart", { cartProducts });
 });
 
 router.get("/add-to-cart/:id", varifyLogin, (req, res) => {
